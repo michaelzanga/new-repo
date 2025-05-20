@@ -1,0 +1,51 @@
+# create michael_vpc
+
+resource "aws_vpc" "vpc1" {
+  cidr_block       = var.cidr_block_vpc1
+  tags = {
+    Name = "michael_vpc"
+  }
+}
+
+#create bertrand vpc
+resource "aws_vpc" "vpc2" {
+  cidr_block       = var.cidr_block_vpc2
+  tags = {
+    Name = "bertrand_vpc"
+  }
+}
+
+#Create subnets
+resource "aws_subnet" "sub1" {
+  vpc_id     = aws_vpc.vpc1.id
+  cidr_block = var.cidr_block_sub1
+
+  tags = {
+    Name = "PrivSub1"
+  }
+}
+
+resource "aws_subnet" "sub2" {
+  vpc_id     = aws_vpc.vpc1.id
+  cidr_block = var.cidr_block_sub2
+  tags = {
+    Name = "PubSub1"
+  }
+}
+
+resource "aws_subnet" "sub3" {
+  vpc_id     = aws_vpc.vpc2.id
+  cidr_block = var.cidr_block_sub3
+  tags = {
+    Name = "Privsub2"
+  }
+}
+resource "aws_subnet" "sub4" {
+  vpc_id     = aws_vpc.vpc2.id
+  cidr_block = var.cidr_block_sub4
+  tags = {
+    Name = "Pubsub2" 
+  }
+}
+
+
