@@ -1,0 +1,7 @@
+name : gitactiontest
+on : push
+jobs : 
+  michaelworkflows : 
+    runs-on : unbuntu latest
+    steps :
+      run : echo "la vies est belle" 
